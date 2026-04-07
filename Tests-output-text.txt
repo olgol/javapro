@@ -1,0 +1,22 @@
+BeforeSuite
+BeforeEach
+AfterEach
+BeforeEach
+AfterEach
+BeforeEach
+AfterEach
+AfterSuite
+
+Success:
+ - Успешный тест
+
+Failed:
+ - Проваленный тест | assert failed
+
+Error:
+ - Тест с ошибкой | boom
+
+Skipped:
+ - Пропущенный тест
+
+Process finished with exit code 0
