@@ -1,0 +1,11 @@
+simple-pool-worker-2 выполняет задачу 2
+simple-pool-worker-0 выполняет задачу 1
+simple-pool-worker-1 выполняет задачу 3
+simple-pool-worker-0 выполняет задачу 5
+simple-pool-worker-1 выполняет задачу 6
+simple-pool-worker-2 выполняет задачу 4
+simple-pool-worker-0 выполняет задачу 8
+simple-pool-worker-1 выполняет задачу 7
+Все потоки завершили работу.
+
+Process finished with exit code 0
