@@ -43,6 +43,7 @@
             <version>6.1.6</version>
         </dependency>
 
+        <!-- Jakarta Annotation API (необходима для @PostConstruct, если вы её оставляете) -->
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
