@@ -53,6 +53,13 @@
             <artifactId>jakarta.annotation-api</artifactId>
             <version>2.1.1</version>
         </dependency>
+
+        <!-- Logback из spring-boot-starter-jdbc требует SLF4J ≥2.0.9; иначе тянется устаревшая alpha1 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.16</version>
+        </dependency>
     </dependencies>
 
     <build>

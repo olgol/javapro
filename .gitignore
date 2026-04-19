@@ -1,9 +1,7 @@
-.vscode/
-/target/
-/out/
 target/
 .idea/
 *.iml
 *.ipr
 *.iws
 out/
+.vscode/
