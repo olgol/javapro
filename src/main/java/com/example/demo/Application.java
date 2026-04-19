@@ -4,14 +4,16 @@ import com.example.demo.config.AppConfig;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.List;
 
+@ComponentScan
 public class Application {
 
     public static void main(String[] args) {
         try (AnnotationConfigApplicationContext ctx =
-                     new AnnotationConfigApplicationContext(AppConfig.class)) {
+                     new AnnotationConfigApplicationContext("com.example.demo")) {
 
             UserService userService = ctx.getBean(UserService.class);
 
