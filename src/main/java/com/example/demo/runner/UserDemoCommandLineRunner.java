@@ -2,23 +2,19 @@ package com.example.demo.runner;
 
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
+@Slf4j
 public class UserDemoCommandLineRunner implements CommandLineRunner {
 
-    private static final Logger log = LoggerFactory.getLogger(UserDemoCommandLineRunner.class);
-
     private final UserService userService;
-
-    public UserDemoCommandLineRunner(UserService userService) {
-        this.userService = userService;
-    }
 
     @Override
     public void run(String... args) {
