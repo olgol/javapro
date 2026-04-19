@@ -1,37 +1,56 @@
 package com.example.demo.service;
 
-import com.example.demo.dao.UserDao;
-import com.example.demo.model.User;
+import com.example.demo.entity.User;
+import com.example.demo.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
-    private final UserDao userDao;
+    private final UserRepository userRepository;
 
-    public UserService(UserDao dao) {
-        this.userDao = dao;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
+    @Transactional
     public User createUser(String username) {
-        return userDao.create(new User(username));
+        return userRepository.save(new User(username));
     }
 
+    @Transactional
     public void deleteUser(Long id) {
-        userDao.deleteById(id);
+        userRepository.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
     public User getUser(Long id) {
-        return userDao.findById(id);
+        return userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found: id=" + id));
     }
 
+    @Transactional(readOnly = true)
     public List<User> getAllUsers() {
-        return userDao.findAll();
+        return userRepository.findAllOrderedById();
     }
 
+    @Transactional
     public void deleteAllUsers() {
-        userDao.deleteAll();
+        userRepository.deleteAllInBatch();
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Transactional
+    public int deleteByUsername(String username) {
+        return userRepository.deleteByUsername(username);
     }
 }
