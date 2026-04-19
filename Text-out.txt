@@ -1,6 +1,0 @@
-Created: User{id=5, username='alice'}, User{id=6, username='bob'}
-Fetched: User{id=5, username='alice'}
-All users: [User{id=5, username='alice'}, User{id=6, username='bob'}]
-After delete, all: [User{id=5, username='alice'}]
-
-Process finished with exit code 0
