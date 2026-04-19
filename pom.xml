@@ -21,6 +21,17 @@
             <artifactId>spring-context</artifactId>
             <version>6.2.7</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>6.2.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>3.3.0</version>
+        </dependency>
 
         <!-- PostgreSQL Driver -->
         <dependency>
@@ -36,7 +47,7 @@
             <version>5.0.1</version>
         </dependency>
 
-        <!-- Spring JDBC Template -->
+        <!-- Jakarta Annotations (@PostConstruct и т.п., при необходимости) -->
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
