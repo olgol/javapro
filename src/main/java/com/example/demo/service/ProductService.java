@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.ProductResponse;
 import com.example.demo.entity.Product;
+import com.example.demo.mapper.ProductMapper;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,6 +18,7 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
+    private final ProductMapper productMapper;
 
     @Transactional(readOnly = true)
     public List<ProductResponse> findAllByUserId(Long userId) {
@@ -24,7 +26,7 @@ public class ProductService {
             throw new EntityNotFoundException("User not found: id=" + userId);
         }
         return productRepository.findAllByUserIdWithUser(userId).stream()
-                .map(ProductResponse::from)
+                .map(productMapper::toResponse)
                 .toList();
     }
 
@@ -32,7 +34,7 @@ public class ProductService {
     public ProductResponse findByProductId(Long productId) {
         Product product = productRepository.findByIdWithUser(productId)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found: id=" + productId));
-        return ProductResponse.from(product);
+        return productMapper.toResponse(product);
     }
 
     @Transactional
