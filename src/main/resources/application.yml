@@ -1,3 +1,7 @@
+server:
+  # Порт встроенного Tomcat (Jetty/Undertow). По умолчанию у Spring Boot — 8080.
+  port: 8080
+
 spring:
   application:
     name: javapro
