@@ -51,7 +51,7 @@ public class UserDemoCommandLineRunner implements CommandLineRunner {
         log.info("Удалено строк: {}", removed);
         printAll(userService.getAllUsers());
 
-        log.info("--- Демо завершено (deleteAllUsers доступен в UserService при необходимости) ---");
+        log.info("---(deleteAllUsers доступен в UserService при необходимости) ---");
     }
 
     private static void printAll(List<User> users) {
