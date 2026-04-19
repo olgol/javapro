@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.config.AppConfig;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -13,7 +12,7 @@ public class Application {
 
     public static void main(String[] args) {
         try (AnnotationConfigApplicationContext ctx =
-                     new AnnotationConfigApplicationContext()) {
+                     new AnnotationConfigApplicationContext(Application.class)) {
 
             UserService userService = ctx.getBean(UserService.class);
 
