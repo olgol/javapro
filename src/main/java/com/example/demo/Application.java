@@ -13,7 +13,7 @@ public class Application {
 
     public static void main(String[] args) {
         try (AnnotationConfigApplicationContext ctx =
-                     new AnnotationConfigApplicationContext()) {
+                     new AnnotationConfigApplicationContext(Application.class)) {
 
             UserService userService = ctx.getBean(UserService.class);
 
