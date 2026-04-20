@@ -1,10 +1,9 @@
 server:
-  # Порт встроенного Tomcat (Jetty/Undertow). По умолчанию у Spring Boot — 8080.
   port: 8080
 
 spring:
   application:
-    name: javapro
+    name: products-service
   mvc:
     throw-exception-if-no-handler-found: true
   web:
@@ -32,5 +31,4 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
-    # Схема уже могла быть создана вручную/JDBC без flyway_schema_history
     baseline-on-migrate: true

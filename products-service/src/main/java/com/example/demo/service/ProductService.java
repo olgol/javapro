@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.ProductResponse;
 import com.example.demo.entity.Product;
+import com.example.demo.exception.InsufficientFundsException;
 import com.example.demo.mapper.ProductMapper;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.repository.UserRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.math.BigDecimal;
 
 @Service
 @RequiredArgsConstructor
@@ -40,5 +42,21 @@ public class ProductService {
     @Transactional
     public Product save(Product product) {
         return productRepository.save(product);
+    }
+
+    @Transactional
+    public ProductResponse debit(Long productId, BigDecimal amount) {
+        Product product = productRepository.findByIdWithUserForUpdate(productId)
+                .orElseThrow(() -> new EntityNotFoundException("Product not found: id=" + productId));
+
+        if (product.getBalance().compareTo(amount) < 0) {
+            throw new InsufficientFundsException(
+                    "Insufficient funds for product id=%d: balance=%s, requested=%s"
+                            .formatted(productId, product.getBalance(), amount)
+            );
+        }
+
+        product.setBalance(product.getBalance().subtract(amount));
+        return productMapper.toResponse(product);
     }
 }
